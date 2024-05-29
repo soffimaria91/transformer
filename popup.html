@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>API Name Settings</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 10px;
+      width: 178px; /* Adjusted width */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h2 {
+      text-align: center;
+      width: 100%;
+    }
+    .radio-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+    label {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      margin-bottom: 8px;
+      width: 100%;
+    }
+    label span {
+      display: inline-block;
+      width: 80px; /* Fixed width to align labels */
+      text-align: left;
+    }
+    input[type="radio"] {
+      margin-right: 8px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+    button {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h2>API Name Settings</h2>
+  <form id="settings-form">
+    <div class="radio-container">
+      <label>
+        <input type="radio" name="naming-convention" value="camelCase" checked>
+        <span>camelCase</span>
+      </label>
+      <label>
+        <input type="radio" name="naming-convention" value="pascalCase">
+        <span>PascalCase</span>
+      </label>
+      <label>
+        <input type="radio" name="naming-convention" value="noChange">
+        <span>No Change</span>
+      </label>
+    </div>
+    <button type="submit">Save</button>
+  </form>
+  <script src="popup.js"></script>
+</body>
+</html>
