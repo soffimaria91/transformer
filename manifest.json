@@ -10,7 +10,6 @@
         "https://*.salesforce.com/*",
         "https://*.force.com/*",
         "https://*.cloudforce.com/*"
-        "https://*.test.com/*"
       ],
       "js": ["js/jquery-3.7.1.min.js", "js/content.js"],
       "all_frames": true
