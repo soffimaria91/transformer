@@ -1,3 +1,8 @@
+/**
+ * @file This JSON file represents the manifest file for the Salesforce API Name Transformer extension.
+ * The extension automatically converts Salesforce field API names to Camel Case or Pascal Case based on user preference.
+ * It defines the necessary permissions, content scripts, and icons for the extension.
+ */
 {
   "manifest_version": 3,
   "name": "Salesforce API Name Transformer",
