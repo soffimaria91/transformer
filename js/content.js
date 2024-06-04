@@ -4,8 +4,9 @@ var BfsApiName = BfsApiName || {};
 
 var DeveloperNameInputElement = DeveloperNameInputElement || {};
 DeveloperNameInputElement.setName = function(d, c, g) {
-  chrome.storage.sync.get('namingConvention', function(data) {
+  chrome.storage.sync.get(['namingConvention', 'prefix'], function(data) {
     const namingConvention = data.namingConvention || 'camelCase';
+    const prefix = data.prefix || '';
     d = d.value.trim();
     if (d.length === 0) return;
 
@@ -28,7 +29,7 @@ DeveloperNameInputElement.setName = function(d, c, g) {
       formattedName = d.replace(/\s+/g, '_');
     }
 
-    c.value = formattedName;
+    c.value = prefix + formattedName;
     console.log("Updated API name to:", c.value);
   });
   return !0;

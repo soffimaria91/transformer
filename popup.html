@@ -9,41 +9,48 @@
       width: 178px; /* Adjusted width */
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: flex-start; /* Align items to the start */
     }
     h2 {
       text-align: center;
       width: 100%;
     }
-    .radio-container {
+    .radio-container, .input-container {
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: center; /* Align items to the center */
+      justify-content: center; /* Center items horizontally */
       width: 100%;
     }
     label {
       display: flex;
       align-items: center;
-      justify-content: flex-start;
+      justify-content: flex-start; /* Align items to the start */
       margin-bottom: 8px;
       width: 100%;
     }
     label span {
       display: inline-block;
-      width: 80px; /* Fixed width to align labels */
+      width: auto; /* Set width to auto */
       text-align: left;
+      margin-right: 8px; /* Add 8px margin to the right */
     }
     input[type="radio"] {
       margin-right: 8px;
     }
+    input[type="text"] {
+      width: 40%; /* Set width to 40% */
+    }
     form {
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: flex-start; /* Align items to the start */
+      justify-content: center; /* Center items vertically */
       width: 100%;
     }
     button {
       margin-top: 10px;
+      align-self: center; /* Center the button */
     }
   </style>
 </head>
@@ -61,7 +68,13 @@
       </label>
       <label>
         <input type="radio" name="naming-convention" value="noChange">
-        <span>No Change</span>
+        <span>No Format Change</span>
+      </label>
+    </div>
+    <div class="input-container">
+      <label>
+        <span>Prefix:</span>
+        <input type="text" id="prefix" name="prefix">
       </label>
     </div>
     <button type="submit">Save</button>
