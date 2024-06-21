@@ -13,15 +13,21 @@ DeveloperNameInputElement.setName = function(d, c, g) {
     let words = d.split(/\s+/);
     let formattedName;
 
-    if (namingConvention === 'camelCase') {
-      formattedName = words[0].toLowerCase();
-      for (let i = 1; i < words.length; i++) {
-        formattedName += words[i].charAt(0).toUpperCase() + words[i].slice(1).toLowerCase();
-      }
-    } else if (namingConvention === 'pascalCase') {
-      formattedName = '';
+    if (namingConvention === 'camelCase' || namingConvention === 'pascalCase') {
       for (let i = 0; i < words.length; i++) {
-        formattedName += words[i].charAt(0).toUpperCase() + words[i].slice(1).toLowerCase();
+        words[i] = words[i].replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue');
+      }
+
+      if (namingConvention === 'camelCase') {
+        formattedName = words[0].toLowerCase();
+        for (let i = 1; i < words.length; i++) {
+          formattedName += words[i].charAt(0).toUpperCase() + words[i].slice(1).toLowerCase();
+        }
+      } else {
+        formattedName = '';
+        for (let i = 0; i < words.length; i++) {
+          formattedName += words[i].charAt(0).toUpperCase() + words[i].slice(1).toLowerCase();
+        }
       }
     } else if (namingConvention === 'noChange') {
       return;
