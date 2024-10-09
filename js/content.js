@@ -41,37 +41,60 @@ DeveloperNameInputElement.setName = function(d, c, g) {
   return !0;
 };
 
+// New function to check if we're dealing with a new item (field or object)
+function isNewItem(nameInput) {
+  return nameInput && nameInput.value.trim() === '';
+}
+
 BfsApiName.init = function() {
   console.log("BfsApiName init called");
 
-  var masterLabelInput = document.querySelector('input#MasterLabel');
-  var developerNameInput = document.querySelector('input#DeveloperName');
-  var nameInput = document.querySelector('input#Name');
+  // For fields
+  var fieldMasterLabelInput = document.querySelector('input#MasterLabel');
+  var fieldDeveloperNameInput = document.querySelector('input#DeveloperName');
+  var fieldNameInput = document.querySelector('input#Name');
 
-  console.log("MasterLabel input found:", masterLabelInput);
-  console.log("DeveloperName input found:", developerNameInput);
-  console.log("Name input found:", nameInput);
+  // For objects
+  var objectLabelInput = document.querySelector('input#MasterLabel');
+  var objectApiNameInput = document.querySelector('input#DeveloperName');
 
-  if (!masterLabelInput || (!developerNameInput && !nameInput) ||
-      (developerNameInput && developerNameInput.disabled) ||
-      (nameInput && nameInput.disabled)) {
-    console.log("Required input fields are not found or are disabled");
-    return;
+  console.log("Field MasterLabel input found:", fieldMasterLabelInput);
+  console.log("Field DeveloperName input found:", fieldDeveloperNameInput);
+  console.log("Field Name input found:", fieldNameInput);
+  console.log("Object Label input found:", objectLabelInput);
+  console.log("Object API Name input found:", objectApiNameInput);
+
+  // Check if we're creating a new field or object
+  var isNewField = isNewItem(fieldDeveloperNameInput) || isNewItem(fieldNameInput);
+  var isNewObject = isNewItem(objectApiNameInput);
+
+  if (fieldMasterLabelInput && isNewField) {
+    console.log("Adding event listener to Field MasterLabel input");
+    fieldMasterLabelInput.addEventListener('blur', function() {
+      console.log("Field MasterLabel blur event triggered");
+      if (fieldDeveloperNameInput) {
+        console.log("Updating Field DeveloperName input");
+        DeveloperNameInputElement.setName(this, fieldDeveloperNameInput, 'Field1');
+        console.log("Updated Field DeveloperName:", fieldDeveloperNameInput.value);
+      } else if (fieldNameInput) {
+        console.log("Updating Field Name input");
+        DeveloperNameInputElement.setName(this, fieldNameInput, 'Field1');
+        console.log("Updated Field Name:", fieldNameInput.value);
+      }
+    });
   }
 
-  console.log("Adding event listener to MasterLabel input");
-  masterLabelInput.addEventListener('blur', function() {
-    console.log("MasterLabel blur event triggered");
-    if (developerNameInput) {
-      console.log("Updating DeveloperName input");
-      DeveloperNameInputElement.setName(this, developerNameInput, 'Field1');
-      console.log("Updated DeveloperName:", developerNameInput.value);
-    } else if (nameInput) {
-      console.log("Updating Name input");
-      DeveloperNameInputElement.setName(this, nameInput, 'Field1');
-      console.log("Updated Name:", nameInput.value);
-    }
-  });
+  if (objectLabelInput && isNewObject) {
+    console.log("Adding event listener to Object Label input");
+    objectLabelInput.addEventListener('blur', function() {
+      console.log("Object Label blur event triggered");
+      if (objectApiNameInput) {
+        console.log("Updating Object API Name input");
+        DeveloperNameInputElement.setName(this, objectApiNameInput, 'Object1');
+        console.log("Updated Object API Name:", objectApiNameInput.value);
+      }
+    });
+  }
 };
 
 BfsApiName.init();
